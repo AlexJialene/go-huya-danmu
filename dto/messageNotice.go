@@ -2,14 +2,14 @@ package dto
 
 type MessageNotice struct {
 	BadgeName       string `json:"badgeName"`
-	Content         string
-	FansLevel       int
-	NobleLevel      int
-	Roomid          int
+	Content         string `json:"content"`
+	FansLevel       int    `json:"fansLevel"`
+	NobleLevel      int    `json:"nobleLevel"`
+	Roomid          int    `json:"roomid"`
 	SendNick        string `json:"sendNick"`
-	SenderAvatarUrl string
-	SenderGender    int
-	ShowMode        int
+	SenderAvatarUrl string `json:"senderAvatarUrl"`
+	SenderGender    int    `json:"senderGender"`
+	ShowMode        int    `json:"showMode"`
 }
 
 type ResponseData struct {
@@ -17,9 +17,14 @@ type ResponseData struct {
 
 	StatusMsg string `json:"statusMsg"`
 
-	Data MessageNotice `json:"data"`
+	Data *MessageNotice `json:"data"`
 }
 
 type Test struct {
 	Name string `json:"nick"`
+}
+
+type Test1 struct {
+	Type int `json:"type"`
+	T *Test `json:"t"`
 }
