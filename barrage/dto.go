@@ -1,4 +1,4 @@
-package dto
+package barrage
 
 type MessageNotice struct {
 	BadgeName       string `json:"badgeName"`
@@ -17,14 +17,5 @@ type ResponseData struct {
 
 	StatusMsg string `json:"statusMsg"`
 
-	Data *MessageNotice `json:"data"`
-}
-
-type Test struct {
-	Name string `json:"nick"`
-}
-
-type Test1 struct {
-	Type int `json:"type"`
-	T *Test `json:"t"`
+	Data interface{} `json:"data"`
 }
