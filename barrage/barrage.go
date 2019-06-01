@@ -18,7 +18,7 @@ const (
 	VIP_NOTICE     = "ws://openapi.huya.com/index.html?do=getVipEnterBannerNotice&data={}&appId={}&timestamp={}&sign={}"
 )
 
-var C chan int
+var C = make(chan int)
 
 func Md5String(s string) string {
 	md := md5.New()
@@ -55,7 +55,7 @@ func ToStruct(call, obj interface{}) error {
 
 func (c Client) recvMessage(ws *websocket.Conn, call func(dto interface{})) {
 	defer ws.Close()
-	for ; ; {
+	for {
 		var str string
 		err := websocket.Message.Receive(ws, &str)
 		if err != nil {
@@ -65,6 +65,7 @@ func (c Client) recvMessage(ws *websocket.Conn, call func(dto interface{})) {
 		json.Unmarshal([]byte(str), res)
 		call(res.Data)
 	}
+
 }
 
 func (c Client) Connect(url string, call func(call interface{})) {
@@ -101,9 +102,40 @@ func Sync() {
 	if C == nil {
 		C = make(chan int)
 	}
-
 	<-C
+}
 
+func ConnectMessage(c Client, callback func(message *MessageNotice)) {
+	c.Connect(MESSAGE_NOTICE, func(call interface{}) {
+		b := &MessageNotice{}
+		err := ToStruct(call, b)
+		if err != nil {
+			log.Println("[Error]", err)
+		}
+		callback(b)
+	})
+}
+
+func ConnectItemMessage(c Client, callback func(message *ItemNotice)) {
+	c.Connect(ITEM_NOTICE, func(call interface{}) {
+		b := &ItemNotice{}
+		err := ToStruct(call, b)
+		if err != nil {
+			log.Println("[Error]", err)
+		}
+		callback(b)
+	})
+}
+
+func ConnectVipMessage(c Client, callback func(message *VipNotice)) {
+	c.Connect(VIP_NOTICE, func(call interface{}) {
+		b := &VipNotice{}
+		err := ToStruct(call, b)
+		if err != nil {
+			log.Println("[Error]", err)
+		}
+		callback(b)
+	})
 }
 
 type Client struct {
