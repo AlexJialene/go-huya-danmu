@@ -35,9 +35,11 @@ barrage.Sync()
 ```
 The end of the program must use the Sync（`barrage.Sync()`） method to block the main thread
 
-You can refer to the [example.go]() file.
+You can refer to the [example.go](https://github.com/AlexJialene/go-huya-danmu/blob/master/example.go) file.
 
-----
+## Callback parameter description
+
+* MessageNotice
 
 |参数名称	| 类型	|描述|
 |:-|:-:|-:|
@@ -49,5 +51,33 @@ You can refer to the [example.go]() file.
 |content|string	|发言内容|
 |nobleLevel|int|贵族等级|
 |fansLevel|int粉丝等级|
-|badgeName|string|粉丝徽章名称（普通弹幕，不包括上电视弹幕|
+|badgeName|string|粉丝徽章名称（普通弹幕，不包括上电视弹幕）|
+
+* ItemNotice
+
+|参数名称	| 类型	|描述|
+|:-|:-:|-:|
+|roomId|int|房间号|
+|presenterNick|string|主播昵称|
+|sendNick|string|发言人昵称|
+|senderAvatarUrl|string发言人头像|
+|itemName|string|礼物名称|
+|sendItemCount|int|消费数量|
+|sendItemComboHits|int|送礼连击数|
+
+* VipNotice
+
+|参数名称	| 类型	|描述|
+|:-|:-:|-:|
+|roomId|int|房间号|
+|userNick|string|进场用户昵称|
+|userAvatarUrl|string|	进场用户头像|
+|weekRank|int|对应房间进场用户的周贡排名|
+|guardLevel|int|对应房间主播的进场用户守护等级|
+|nobleLevel|int|进场用户的贵族等级|
+|nobleName|string|贵族名称|
+|fansLevel|int|粉丝等级（只有是该房间主播的粉丝才会返回该字段）|
+|badgeName|string|粉丝徽章名称（只有是该房间主播的粉丝才会返回该字段）|
+
+
 
