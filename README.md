@@ -14,6 +14,7 @@ go get github.com/AlexJialene/go-huya-danmu
 ```
 
 ```
+client := barrage.Client{RoomId: "518512", AppId: "APP ID", Key: "secretId"}
 barrage.ConnectMessage(client , func(message *barrage.MessageNotice) {
     //弹幕消息
     fmt.Println(message.SendNick)
@@ -50,7 +51,7 @@ You can refer to the [example.go](https://github.com/AlexJialene/go-huya-danmu/b
 |showMode|string|显示类型：0.公屏和弹幕 1.公屏 2.弹幕|
 |content|string	|发言内容|
 |nobleLevel|int|贵族等级|
-|fansLevel|int粉丝等级|
+|fansLevel|int|粉丝等级|
 |badgeName|string|粉丝徽章名称（普通弹幕，不包括上电视弹幕）|
 
 * ItemNotice
@@ -60,7 +61,7 @@ You can refer to the [example.go](https://github.com/AlexJialene/go-huya-danmu/b
 |roomId|int|房间号|
 |presenterNick|string|主播昵称|
 |sendNick|string|发言人昵称|
-|senderAvatarUrl|string发言人头像|
+|senderAvatarUrl|string|发言人头像|
 |itemName|string|礼物名称|
 |sendItemCount|int|消费数量|
 |sendItemComboHits|int|送礼连击数|
