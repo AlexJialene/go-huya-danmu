@@ -80,5 +80,9 @@ You can refer to the [example.go](https://github.com/AlexJialene/go-huya-danmu/b
 |fansLevel|int|粉丝等级（只有是该房间主播的粉丝才会返回该字段）|
 |badgeName|string|粉丝徽章名称（只有是该房间主播的粉丝才会返回该字段）|
 
+## More extensions
+
+[go-mini-web](https://github.com/AlexJialene/go-mini-web)
+
 
 
