@@ -1,8 +1,8 @@
 package main
 
 import (
-	"go-huya-danmu/barrage"
 	"fmt"
+	"go-huya-danmu/barrage"
 )
 
 func main() {
@@ -24,17 +24,17 @@ func main() {
 	//	fmt.Println(i.ItemName)
 	//})
 
-	barrage.ConnectMessage(client , func(message *barrage.MessageNotice) {
+	barrage.ConnectMessage(client, func(message *barrage.MessageNotice) {
 		//弹幕消息
 		fmt.Println(message.SendNick)
 	})
 
-	barrage.ConnectItemMessage(client , func(message *barrage.ItemNotice) {
+	barrage.ConnectItemMessage(client, func(message *barrage.ItemNotice) {
 		//礼物消息
 		fmt.Println(message.ItemName)
 	})
 
-	barrage.ConnectVipMessage(client , func(message *barrage.VipNotice) {
+	barrage.ConnectVipMessage(client, func(message *barrage.VipNotice) {
 		//贵族进场
 		fmt.Println(message.NobleName)
 	})
